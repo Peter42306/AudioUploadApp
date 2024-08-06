@@ -1,0 +1,26 @@
+﻿<!-- Views/AudioUpload/Index.cshtml -->
+@model AudioUploadApp.Models.AudioFile
+
+@{
+    ViewData["Title"] = "Загрузка аудио файла";
+}
+
+<h2>Загрузка аудио файла</h2>
+
+<form asp-action="Upload" asp-controller="AudioUpload" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="File">Выберите аудио файл</label>
+        <input type="file" asp-for="File" class="form-control" />
+        <span asp-validation-for="File" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Загрузить</button>
+</form>
+
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-success">@ViewBag.Message</div>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
